@@ -1,6 +1,6 @@
 package com.shop.core.model.dto;
 
-import com.shop.core.model.entity.Role;
+import com.shop.core.model.entity.user.Role;
 import com.shop.core.validator.annotation.RoleValidation;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;

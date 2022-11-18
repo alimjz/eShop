@@ -23,6 +23,7 @@
         <module>Sales</module>
         <module>Registration</module>
         <module>api-gateway</module>
+        <module>user.oauth2.0</module>
     </modules>
 
 

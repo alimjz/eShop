@@ -5,7 +5,6 @@ import com.shop.core.model.entity.*;
 import com.shop.core.model.enums.AddressType;
 import com.shop.core.model.enums.BusinessCode;
 import com.shop.core.model.enums.OrderStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,24 +49,6 @@ public class EntityFactory {
         return address;
     }
 
-    public static User convertToUser(UserDto userDto) {
-        if (userDto == null) {
-            return null;
-        }
-        Address address = userAddressFactory(userDto);
-
-        Contact contact = userContactFactory(userDto, address);
-
-        User user = new User();
-        user.setAccount(userDto.getAccount());
-        user.setPassword(new BCryptPasswordEncoder().encode(userDto.getPassword()));
-        user.setUserName(userDto.getUserName());
-        user.setUserLastName(userDto.getUserLastName());
-        user.setRole(userDto.getRole());
-        user.setContact(contact);
-
-        return user;
-    }
 
     private static Contact userContactFactory(UserDto userDto, Address address) {
         Contact contact = new Contact();

@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateway" />
+        <module name="user.oauth2.0" />
         <module name="Campaign" />
         <module name="Sales" />
         <module name="Registration" />
@@ -23,6 +24,7 @@
       <module name="Sales" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
       <module name="eShop" options="" />
+      <module name="user.oauth2.0" options="-parameters" />
     </option>
   </component>
 </project>
