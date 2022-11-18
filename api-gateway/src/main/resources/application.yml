@@ -1,0 +1,31 @@
+server:
+  port: 2000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: campaign-Campaign
+          uri: http://localhost:8083/api/v1/campaign
+          predicates:
+            - Path=/api/v1/campaign/*
+
+        - id: customer-Registration
+          uri: http://localhost:8081/api/v1/customers/**
+          predicates:
+            - Path=/api/v1/customers/**
+
+        - id: orders-Sales
+          uri: http://localhost:8082/api/v1/**
+          predicates:
+            - Path=/api/v1/orders/**
+
+        - id: product-Sales
+          uri: http://localhost:8082/api/v1/products/**
+          predicates:
+            - Path=/api/v1/products/**
+
+        - id: user-Registration
+          uri: http://localhost:8081/api/v1/users/**
+          predicates:
+            - Path=/api/v1/users/**

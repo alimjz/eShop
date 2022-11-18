@@ -1,0 +1,90 @@
+09:41:38.421 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+09:41:38.476 [restartedMain] INFO  com.shop.sales.SalesApplication - Starting SalesApplication using Java 1.8.0_341 on DESKTOP-N29M0O9 with PID 7668 (C:\Digipay\eShop\Sales\target\classes started by Ali in C:\Digipay\eShop)
+09:41:38.479 [restartedMain] INFO  com.shop.sales.SalesApplication - No active profile set, falling back to 1 default profile: "default"
+09:41:38.764 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+09:41:38.766 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+09:41:40.674 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+09:41:40.898 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 195 ms. Found 7 JPA repository interfaces.
+09:41:44.052 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+09:41:44.071 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+09:41:44.074 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+09:41:44.074 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.68]
+09:41:44.368 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+09:41:44.369 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5601 ms
+09:41:45.078 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+09:41:45.196 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.12.Final
+09:41:45.574 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+09:41:45.841 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+09:41:47.188 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+09:41:47.221 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+09:41:47.743 [restartedMain] WARN  org.hibernate.id.UUIDHexGenerator - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+09:41:49.306 [restartedMain] DEBUG org.hibernate.SQL - create table tbl_address (address_id varchar(255) not null, address_type integer, building_no varchar(255), city varchar(255), postal_code varchar(10), province varchar(255), street varchar(255), primary key (address_id)) engine=InnoDB
+09:41:49.364 [restartedMain] DEBUG org.hibernate.SQL - create table tbl_contact (contact_id varchar(255) not null, contact_type integer, email varchar(255), phone_number varchar(255), address_id varchar(255), primary key (contact_id)) engine=InnoDB
+09:41:49.420 [restartedMain] DEBUG org.hibernate.SQL - create table tbl_customer (customer_id varchar(255) not null, birth_certificate_no varchar(255), birth_date date, birth_place varchar(255), first_name varchar(255), last_name varchar(255), national_id varchar(10) not null, register_date datetime(6), contact_id varchar(255), primary key (customer_id)) engine=InnoDB
+09:41:49.481 [restartedMain] DEBUG org.hibernate.SQL - create table tbl_invoice (invoice_id varchar(255) not null, base_fee double precision, discount_amount double precision, discount_percent double precision, pay_able_amount double precision, tax double precision, primary key (invoice_id)) engine=InnoDB
+09:41:49.540 [restartedMain] DEBUG org.hibernate.SQL - create table tbl_orders (order_id varchar(255) not null, business_code integer, create_date datetime(6) not null, status integer, status_date datetime(6), customer_id varchar(255), invoice_id varchar(255), primary key (order_id)) engine=InnoDB
+09:41:49.594 [restartedMain] DEBUG org.hibernate.SQL - create table tbl_product (prod_id bigint not null auto_increment, buy_price double precision, model varchar(255), prod_code varchar(255), prod_name varchar(255), prod_sub_type varchar(255), prod_type varchar(255), quantity integer, sell_price double precision, status integer, warehouse_id varchar(255), primary key (prod_id)) engine=InnoDB
+09:41:49.647 [restartedMain] DEBUG org.hibernate.SQL - create table tbl_sale_items (sales_item_id varchar(255) not null, prod_code varchar(255), prod_name varchar(255), product_id bigint, quantity integer not null, sell_price double precision, order_order_id varchar(255), primary key (sales_item_id)) engine=InnoDB
+09:41:49.697 [restartedMain] DEBUG org.hibernate.SQL - create table tbl_user (user_id varchar(255) not null, account varchar(255), password varchar(255), role integer, user_last_name varchar(255), user_name varchar(255), contact_id varchar(255), primary key (user_id)) engine=InnoDB
+09:41:49.745 [restartedMain] DEBUG org.hibernate.SQL - create table tbl_warehouse (warehouse_id varchar(255) not null, warehouse_name varchar(255), address_id varchar(255), primary key (warehouse_id)) engine=InnoDB
+09:41:49.802 [restartedMain] DEBUG org.hibernate.SQL - alter table tbl_customer drop index UK_f8w9k40hxk1ft53y8ekonku9n
+09:41:49.841 [restartedMain] DEBUG org.hibernate.SQL - alter table tbl_customer add constraint UK_f8w9k40hxk1ft53y8ekonku9n unique (national_id)
+09:41:49.898 [restartedMain] DEBUG org.hibernate.SQL - alter table tbl_contact add constraint FKguh7updtv9xe2ruco1jesgovx foreign key (address_id) references tbl_address (address_id)
+09:41:50.049 [restartedMain] DEBUG org.hibernate.SQL - alter table tbl_customer add constraint FKfgsfl6uur9629rqe0p59y217o foreign key (contact_id) references tbl_contact (contact_id)
+09:41:50.263 [restartedMain] DEBUG org.hibernate.SQL - alter table tbl_orders add constraint FK710tek6g15c6kfdif3vnip5tq foreign key (customer_id) references tbl_customer (customer_id)
+09:41:50.385 [restartedMain] DEBUG org.hibernate.SQL - alter table tbl_orders add constraint FKiorpyex3wqpk8f7cnvt8d2nh5 foreign key (invoice_id) references tbl_invoice (invoice_id)
+09:41:50.479 [restartedMain] DEBUG org.hibernate.SQL - alter table tbl_product add constraint FKhb8r330v3bu78splc2w11v696 foreign key (warehouse_id) references tbl_warehouse (warehouse_id)
+09:41:50.597 [restartedMain] DEBUG org.hibernate.SQL - alter table tbl_sale_items add constraint FK67p8nxollxauybb25llkbbf2k foreign key (order_order_id) references tbl_orders (order_id)
+09:41:50.712 [restartedMain] DEBUG org.hibernate.SQL - alter table tbl_user add constraint FK87ndwpv230rxbhdi3na6yie9p foreign key (contact_id) references tbl_contact (contact_id)
+09:41:50.830 [restartedMain] DEBUG org.hibernate.SQL - alter table tbl_warehouse add constraint FKtni5wsu8n3mui6h50ftbbism4 foreign key (address_id) references tbl_address (address_id)
+09:41:50.961 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+09:41:50.985 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+09:41:53.024 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4f9dea87, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@32eca14d, org.springframework.security.web.context.SecurityContextPersistenceFilter@169d50dd, org.springframework.security.web.header.HeaderWriterFilter@4d4a6902, org.springframework.security.web.authentication.logout.LogoutFilter@2e856fc8, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1063dac0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@796e2e5a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@f7c8e17, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@125412ad, org.springframework.security.web.session.SessionManagementFilter@3e1ea89b, org.springframework.security.web.access.ExceptionTranslationFilter@d2b4b39, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1d1eb161]
+09:41:53.548 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+09:41:56.059 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+09:41:56.075 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
+09:41:56.182 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+09:41:56.250 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+09:41:56.297 [restartedMain] INFO  com.shop.sales.SalesApplication - Started SalesApplication in 18.711 seconds (JVM running for 21.457)
+09:41:56.731 [RMI TCP Connection(1)-192.168.95.17] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+09:41:56.732 [RMI TCP Connection(1)-192.168.95.17] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+09:41:56.737 [RMI TCP Connection(1)-192.168.95.17] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+09:42:56.628 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+09:42:57.161 [Thread-42] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8082"]
+09:42:57.162 [Thread-42] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+09:42:57.170 [Thread-42] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+09:42:57.187 [Thread-42] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8082"]
+09:42:57.196 [Thread-42] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8082"]
+09:42:57.234 [Thread-42] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+09:42:57.248 [Thread-42] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+09:42:57.292 [Thread-42] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+09:42:58.609 [restartedMain] INFO  com.shop.sales.SalesApplication - Starting SalesApplication using Java 1.8.0_341 on DESKTOP-N29M0O9 with PID 7668 (C:\Digipay\eShop\Sales\target\classes started by Ali in C:\Digipay\eShop)
+09:42:58.612 [restartedMain] INFO  com.shop.sales.SalesApplication - No active profile set, falling back to 1 default profile: "default"
+09:42:59.909 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+09:42:59.989 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 78 ms. Found 7 JPA repository interfaces.
+09:43:01.434 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+09:43:01.438 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+09:43:01.439 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+09:43:01.441 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.68]
+09:43:01.644 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+09:43:01.645 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2941 ms
+09:43:02.060 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+09:43:02.112 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+09:43:02.244 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+09:43:02.246 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+09:43:03.222 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+09:43:03.223 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+09:43:04.018 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7fb89404, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2efa3f40, org.springframework.security.web.context.SecurityContextPersistenceFilter@3e26e4af, org.springframework.security.web.header.HeaderWriterFilter@49d52d3, org.springframework.security.web.authentication.logout.LogoutFilter@700e6907, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@57bcd3bd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@58c1e50f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@36a42f0e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5d20a63c, org.springframework.security.web.session.SessionManagementFilter@4a50b7f1, org.springframework.security.web.access.ExceptionTranslationFilter@127e9fe3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7b010516]
+09:43:04.580 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+09:43:06.204 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+09:43:06.220 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
+09:43:06.292 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+09:43:06.299 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+09:43:06.329 [restartedMain] INFO  com.shop.sales.SalesApplication - Started SalesApplication in 8.038 seconds (JVM running for 91.49)
+09:43:06.339 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+12:41:41.530 [HikariPool-2 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=11m6s276ms1µs100ns).
+13:32:51.915 [HikariPool-2 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=4m39s666ms813µs300ns).
+13:56:59.811 [HikariPool-2 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=9m7s644ms438µs500ns).
+13:57:20.134 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+13:57:20.142 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+13:57:20.157 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
